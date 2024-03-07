@@ -1,7 +1,6 @@
 //=========================================================
 // Known issues
 // 1. For somereason its not setting the input fields value for the players name
-// 2. After a game is finished, if you drag your mouse over the board, it deletes the replay button and dosent reset the board
 
 const gameContainer = document.getElementById('container');
 let titleText = document.getElementById('title-text');
@@ -32,8 +31,7 @@ document.getElementById('start').addEventListener('click', function() {
   gameContainer.style.display = 'flex';
   document.getElementById('start').style.display = 'none';
 
-  if(replay === true){
-
+  if(replay){
     let boxes = document.getElementsByClassName('box');
     for (let box of boxes) {
       box.innerText = ''; // Clear text content of each box
@@ -58,7 +56,6 @@ function check() {
   let playerOneTurn = true;
   gameContainer.style.display = 'flex';
   document.getElementById('start').innerText = 'Play'; //Changes text from "Play again?" back to play
-  document.getElementById('start').style.display = 'none';
 
   topLeft.addEventListener('click', function () {
     if (topLeft.innerText === '' && playerOneTurn && !gameOver) {

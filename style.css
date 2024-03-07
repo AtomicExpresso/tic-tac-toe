@@ -27,8 +27,13 @@ nav h1 {
 
 .box {
   display: flex;
+  justify-content: center;
+  align-items: center;
   border: solid 1px black;
-  padding: 35px;
+  width: 80px;
+  height: 80px;
+  color: red;
+  font-size: 30px;
 }
 
 .upper-section {
@@ -89,11 +94,11 @@ form {
 }
 
 .player-names-top label,
-.player-names-bottom label{
+.player-names-bottom label {
   margin-bottom: 10px;
 }
 
-.upper-section h1{
+.upper-section h1 {
   font-size: 50px;
   line-height: 0;
 }
