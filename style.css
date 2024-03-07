@@ -20,5 +20,11 @@ nav h1{
 }
 
 .container {
-  border: solid 2px black;
+  display: flex;
+  justify-content: center;
+}
+
+.box{
+  border: solid 1px black;
+  padding: 35px;
 }

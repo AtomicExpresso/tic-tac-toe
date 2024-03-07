@@ -1,6 +1,16 @@
-const gameBoard = [''];
+const playerOneName = document.getElementById('playeronename');
+const playerTwoName = document.getElementById('playertwoname');
+const topRow = document.getElementById('top-row');
 
-function displayBoard() {
-  const displayBoard = document.getElementById('container');
-  displayBoard.style.display = 'flex';
+const gameBoard = ['', '', '', '', '', '', '', '', ''];
+
+const game = () => {
+  const player = (name, id) => {
+    this.name = name;
+    this.id = id;
+  }
 }
+
+
+
+game();
