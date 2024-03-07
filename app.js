@@ -1,11 +1,19 @@
+//=========================================================
+// Known issues
+// 1. For somereason its not setting the input fields value for the players name
+// 2. After a game is finished, if you drag your mouse over the board, it deletes the replay button and dosent reset the board
+
+const gameContainer = document.getElementById('container');
+let titleText = document.getElementById('title-text');
 const playerOneName = document.getElementById('playeronename');
 const playerTwoName = document.getElementById('playertwoname');
 
-let gameBoard = ['', '', '', '', '', '', '', '', '']; //Game board's array
+gameContainer.style.display = 'none';
+let gameBoard = ['', '', '', '', '', '', '', '', '']; //Game board's array, each string represents a square on the grid
 let gameOver = false; //Used to prevent moves after the game has finished
+let replay = false;
 
-
-function player(name, id) {
+function player(name, id) { //Factory function, used for player names and their id
   return {
     name: name,
     id: id,
@@ -16,9 +24,25 @@ function player(name, id) {
   };
 }
 
-let p1 = player(playerOneName.value, 'x');
-let p2 = player(playerTwoName.value, 'o');
+let p1 = player(`${playerOneName.value}`, 'x');
+let p2 = player(`${playerTwoName.value}`, 'o');
 
+//===Start game===
+document.getElementById('start').addEventListener('click', function() {
+  gameContainer.style.display = 'flex';
+  document.getElementById('start').style.display = 'none';
+
+  if(replay === true){
+
+    let boxes = document.getElementsByClassName('box');
+    for (let box of boxes) {
+      box.innerText = ''; // Clear text content of each box
+    }
+    titleText.innerText = 'Welcome';
+    titleText.style.color = 'black';
+    gameOver = false;
+  }
+});
 //===Game function===
 function check() {
   const topLeft = document.getElementById('top-left');
@@ -32,16 +56,19 @@ function check() {
   const bottomRight = document.getElementById('bottom-right');
 
   let playerOneTurn = true;
+  gameContainer.style.display = 'flex';
   document.getElementById('start').innerText = 'Play'; //Changes text from "Play again?" back to play
   document.getElementById('start').style.display = 'none';
 
   topLeft.addEventListener('click', function () {
     if (topLeft.innerText === '' && playerOneTurn && !gameOver) {
       topLeft.innerText = p1.id;
+      titleText.innerText = `Player 2's turn`;
       playerOneTurn = false;
       gameBoard[0] = p1.id;
     } else if (topLeft.innerText === '' && !playerOneTurn && !gameOver) {
       topLeft.innerText = p2.id;
+      titleText.innerText = `Player 1's turn`;
       playerOneTurn = true;
       gameBoard[0] = p2.id;
     }
@@ -50,10 +77,12 @@ function check() {
   topCenter.addEventListener('click', function () {
     if (topCenter.innerText === '' && playerOneTurn && !gameOver) {
       topCenter.innerText = p1.id;
+      titleText.innerText = `Player 2's turn`;
       playerOneTurn = false;
       gameBoard[1] = p1.id;
     } else if (topCenter.innerText === '' && !playerOneTurn && !gameOver) {
       topCenter.innerText = p2.id;
+      titleText.innerText = `Player 1's turn`;
       playerOneTurn = true;
       gameBoard[1] = p2.id;
     }
@@ -62,10 +91,12 @@ function check() {
   topRight.addEventListener('click', function () {
     if (topRight.innerText === '' && playerOneTurn && !gameOver) {
       topRight.innerText = p1.id;
+      titleText.innerText = `Player 2's turn`;
       playerOneTurn = false;
       gameBoard[2] = p1.id;
     } else if (topRight.innerText === '' && !playerOneTurn && !gameOver) {
       topRight.innerText = p2.id;
+      titleText.innerText = `Player 1's turn`;
       playerOneTurn = true;
       gameBoard[2] = p2.id;
     }
@@ -74,10 +105,12 @@ function check() {
   centerLeft.addEventListener('click', function () {
     if (centerLeft.innerText === '' && playerOneTurn && !gameOver) {
       centerLeft.innerText = p1.id;
+      titleText.innerText = `Player 2's turn`;
       playerOneTurn = false;
       gameBoard[3] = p1.id;
     } else if (centerLeft.innerText === '' && !playerOneTurn && !gameOver) {
       centerLeft.innerText = p2.id;
+      titleText.innerText = `Player 1's turn`;
       playerOneTurn = true;
       gameBoard[3] = p2.id;
     }
@@ -86,10 +119,12 @@ function check() {
   center.addEventListener('click', function () {
     if (center.innerText === '' && playerOneTurn && !gameOver) {
       center.innerText = p1.id;
+      titleText.innerText = `Player 2's turn`;
       playerOneTurn = false;
       gameBoard[4] = p1.id;
     } else if (center.innerText === '' && !playerOneTurn && !gameOver) {
       center.innerText = p2.id;
+      titleText.innerText = `Player 1's turn`;
       playerOneTurn = true;
       gameBoard[4] = p2.id;
     }
@@ -98,10 +133,12 @@ function check() {
   centerRight.addEventListener('click', function () {
     if (centerRight.innerText === '' && playerOneTurn && !gameOver) {
       centerRight.innerText = p1.id;
+      titleText.innerText = `Player 2's turn`;
       playerOneTurn = false;
       gameBoard[5] = p1.id;
     } else if (centerRight.innerText === '' && !playerOneTurn && !gameOver) {
       centerRight.innerText = p2.id;
+      titleText.innerText = `Player 1's turn`;
       playerOneTurn = true;
       gameBoard[5] = p2.id;
     }
@@ -110,10 +147,12 @@ function check() {
   bottomLeft.addEventListener('click', function () {
     if (bottomLeft.innerText === '' && playerOneTurn && !gameOver) {
       bottomLeft.innerText = p1.id;
+      titleText.innerText = `Player 2's turn`;
       playerOneTurn = false;
       gameBoard[6] = p1.id;
     } else if (bottomLeft.innerText === '' && !playerOneTurn && !gameOver) {
       bottomLeft.innerText = p2.id;
+      titleText.innerText = `Player 1's turn`;
       playerOneTurn = true;
       gameBoard[6] = p2.id;
     }
@@ -124,6 +163,7 @@ function check() {
       bottomCenter.innerText = p1.id;
       playerOneTurn = false;
       gameBoard[7] = p1.id;
+      titleText.innerText = `Player 2's turn`;
     } else if (bottomCenter.innerText === '' && !playerOneTurn && !gameOver) {
       bottomCenter.innerText = p2.id;
       playerOneTurn = true;
@@ -134,10 +174,12 @@ function check() {
   bottomRight.addEventListener('click', function () {
     if (bottomRight.innerText === '' && playerOneTurn && !gameOver) {
       bottomRight.innerText = p1.id;
+      titleText.innerText = `Player 2's turn`;
       playerOneTurn = false;
       gameBoard[8] = p1.id;
     } else if (bottomRight.innerText === '' && !playerOneTurn && !gameOver) {
       bottomRight.innerText = p2.id;
+      titleText.innerText = `Player 1's turn`;
       playerOneTurn = true;
       gameBoard[8] = p2.id;
     }
@@ -148,7 +190,6 @@ function check() {
 
 //====Win condition====
 function checkWin() {
-  let titleText = document.getElementById('title-text');
   //col-1
   if (gameBoard[0] === gameBoard[1] &&gameBoard[1] === gameBoard[2] &&gameBoard[0] !== '') {
     if (gameBoard[0] === gameBoard[1] &&gameBoard[1] === gameBoard[2] &&gameBoard[0] === 'x') {
@@ -219,17 +260,22 @@ function checkWin() {
     document.getElementById('start').innerText = 'Play again?';
 
     console.log(`${p1.id} won`);
-    titleText.innerText = `${p1.id} won`;
+    titleText.innerText = `${p1.id} won!`;
     titleText.style.color = 'green';
+    replay = true;
     gameOver = true;
+    gameBoard = ['', '', '', '', '', '', '', '', '']; //resets the array
   }
   function oWon() { //Player two (or O) has won the game
     document.getElementById('start').style.display = 'flex'; //for the "play again" button
     document.getElementById('start').innerText = 'Play again?';
 
     console.log(`${p2.id} won`);
-    titleText.innerText = `${p2.id} won`
+    titleText.innerText = `${p2.id} won!`
     titleText.style.color = 'blue';
     gameOver = true;
+    replay = true;
+    gameBoard = ['', '', '', '', '', '', '', '', '']; //resets the array
   }
 }
+//=========================================================

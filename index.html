@@ -21,22 +21,22 @@
   <section>
     <div class="upper-section">
       <h1 id="title-text">Welcome</h1>
-      <form action="">
-      <div class="player-names">
-        <div class="player-names-top">
-          <label for="playeronename">Player One Name:</label>
-          <input type="text" id="playeronename" placeholder="Your name" maxlength="6" required>
+      <form onsubmit="check();return false">
+        <div class="player-names">
+          <div class="player-names-top">
+            <label for="playeronename">Player One Name:</label>
+            <input type="text" id="playeronename" placeholder="Your name" maxlength="6">
+          </div>
+          <div class="player-names-bottom">
+            <label for="playertwoname">Player Two Name:</label>
+            <input type="text" id="playertwoname" placeholder="Enemys name" maxlength="6">
+          </div>
         </div>
-        <div class="player-names-bottom">
-          <label for="playertwoname">Player Two Name:</label>
-          <input type="text" id="playertwoname" placeholder="Enemys name" maxlength="6" required>
+        <div class="btn">
+          <button id="start" type="submit">Play</button>
         </div>
-      </div>
-      <div class="btn">
-        <button id="start">Play</button>
-      </div>
-    </form>
-  </div>
+      </form>
+    </div>
   </section>
   <section>
     <div class="container" id="container" onclick="check()">
