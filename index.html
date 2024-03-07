@@ -1,36 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tic-tac-toe TOP project</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <section>
     <nav>
       <ul>
-        <li><h1>Tic-Tac-Toe</h1></li>
+        <li>
+          <h1>Tic-Tac-Toe</h1>
+        </li>
       </ul>
     </nav>
   </section>
   <section>
-    <div class="player-names">
-      <label for="playeronename">Player One Name:</label>
-      <input type="text" id="playeronename">
-      <label for="playertwoname">Player Two Name:</label>
-      <input type="text" id="playertwoname">
-    </div>
-    <div class="btn">
-      <button>Play</button>
-    </div>
+    <div class="upper-section">
+      <h1 id="title-text">Welcome</h1>
+      <form action="">
+      <div class="player-names">
+        <div class="player-names-top">
+          <label for="playeronename">Player One Name:</label>
+          <input type="text" id="playeronename" placeholder="Your name" maxlength="6" required>
+        </div>
+        <div class="player-names-bottom">
+          <label for="playertwoname">Player Two Name:</label>
+          <input type="text" id="playertwoname" placeholder="Enemys name" maxlength="6" required>
+        </div>
+      </div>
+      <div class="btn">
+        <button id="start">Play</button>
+      </div>
+    </form>
+  </div>
   </section>
   <section>
     <div class="container" id="container" onclick="check()">
       <div class="row-1" id="top-row">
-        <div id="top-left" class="box" ></div>
-        <div id="top-center" class="box" ></div>
-        <div id="top-right" class="box" ></div>
+        <div id="top-left" class="box"></div>
+        <div id="top-center" class="box"></div>
+        <div id="top-right" class="box"></div>
       </div>
       <div class="row-2">
         <div id="center-left" class="box"></div>
@@ -46,4 +59,5 @@
   </section>
 </body>
 <script src="app.js"></script>
+
 </html>
