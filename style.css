@@ -25,6 +25,7 @@ nav h1{
 }
 
 .box{
+  display: flex;
   border: solid 1px black;
   padding: 35px;
 }
